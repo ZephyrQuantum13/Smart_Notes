@@ -1,0 +1,133 @@
+
+QWidget {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-size: 13px;
+    selection-background-color: #264f78;
+}
+
+
+QWidget#notes_win {
+    background-color: #1e1e1e;
+}
+
+
+QLineEdit, QTextEdit {
+    background-color: #252526;
+    border: 1px solid #3e3e42;
+    border-radius: 4px;
+    padding: 8px;
+    color: #d4d4d4;
+    selection-background-color: #264f78;
+}
+
+QTextEdit {
+    background-color: #1e1e1e;
+    border: 1px solid #3e3e42;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+}
+
+/* ===== СПИСКИ ===== */
+QListWidget {
+    background-color: #252526;
+    border: 1px solid #3e3e42;
+    border-radius: 4px;
+    padding: 4px;
+    outline: 0;
+}
+
+QListWidget::item {
+    background-color: transparent;
+    padding: 6px 8px;
+    border-radius: 3px;
+    color: #d4d4d4;
+}
+
+QListWidget::item:selected {
+    background-color: #2a2d2e;
+    border-left: 3px solid #007acc;
+}
+
+QListWidget::item:hover {
+    background-color: #2a2d2e;
+}
+
+/* ===== КНОПКИ ===== */
+QPushButton {
+    background-color: #0e639c;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+    min-height: 28px;
+}
+
+QPushButton:hover {
+    background-color: #1177bb;
+}
+
+QPushButton:pressed {
+    background-color: #005a8c;
+    padding-top: 9px;
+    padding-bottom: 7px;
+}
+
+/* Кнопки второстепенных действий */
+QPushButton#button_note_del,
+QPushButton#button_tag_del {
+    background-color: transparent;
+    color: #f48771;
+    border: 1px solid #f48771;
+}
+
+QPushButton#button_note_del:hover,
+QPushButton#button_tag_del:hover {
+    background-color: rgba(244, 135, 113, 0.1);
+}
+
+/* МЕТКИ */
+QLabel {
+    color: #cccccc;
+    font-weight: 500;
+    padding: 2px 0;
+}
+
+QLabel#list_notes_label,
+QLabel#list_tags_label {
+    color: #569cd6;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* ===== РАЗДЕЛИТЕЛИ И ГРУППЫ ===== */
+QWidget#centralWidget {
+    border-top: 1px solid #3e3e42;
+}
+
+/* ===== СКРОЛЛБАРЫ ===== */
+QScrollBar:vertical {
+    background-color: #1e1e1e;
+    width: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #424242;
+    border-radius: 6px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #4f4f4f;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
