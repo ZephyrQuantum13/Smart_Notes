@@ -41,6 +41,7 @@ button_tag_del = QPushButton('Открепить от заметки')
 button_tag_search = QPushButton('Искать заметки по тегу')
 list_tags = QListWidget()
 list_tags_label = QLabel('Список тегов')
+button_copy = QPushButton('Создать дубль заметки')
 
 # Подключаем стили из файла style.qss
 file = QFile("styles/main_style.qss")  # Используем QFile из QtCore
@@ -62,6 +63,7 @@ col_2.addWidget(list_notes)
 row_1 = QHBoxLayout()
 row_1.addWidget(button_note_create)
 row_1.addWidget(button_note_del)
+row_1.addWidget(button_copy)
 
 row_2 = QHBoxLayout()
 row_2.addWidget(button_note_save)
@@ -87,6 +89,29 @@ layout_notes.addLayout(col_2, stretch=1)
 notes_win.setLayout(layout_notes)
 
 '''Функционал приложения''' 
+def copy_note():
+    if not list_notes.selectedItems():
+        QMessageBox.warning(notes_win, "Ошибка", "Вы не выбрали заметку!")
+        return
+    
+    orig_note = list_notes.selectedItems()[0].text()
+    
+    
+    orig_data = notes[orig_note] 
+    
+    copy_name = f"{orig_note} (копия)"
+    
+    new_not = {
+        "текст" : orig_data["текст"],
+        "теги" : orig_data["теги"][:]
+    }
+    notes[copy_name] = new_not
+    
+    list_notes.addItem(copy_name)
+    
+    with open("notes_data.json", "w", encoding="utf-8") as file:
+        json.dump(notes, file, ensure_ascii=False)
+    
 def CreateNotes():
     windowDialog, ok = QInputDialog.getText(notes_win, "Создание заметки", "Введите имя заметки:")
     if ok and windowDialog:
@@ -211,6 +236,7 @@ button_note_save.clicked.connect(save_note)
 button_tag_add.clicked.connect(add_tag)
 button_tag_del.clicked.connect(del_tag)
 button_tag_search.clicked.connect(search_tag)
+button_copy.clicked.connect(copy_note)
 
 # загружаем заметки
 list_notes.addItems(notes.keys())
